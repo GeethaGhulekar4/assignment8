@@ -75,13 +75,13 @@ app.get('/company', (req, res) => {
  *            - application/json
  *       responses:
  *           200:
- *              description: return all food details from the customer table
+ *              description: return all customer details from the customer table
  *           500:
  *              description: Internal server error
  * 
  */
 
- app.get('/foods', (req, res) => {
+ app.get('/customer', (req, res) => {
     pool.getConnection()
     .then(conn => {
     
@@ -111,7 +111,7 @@ app.get('/company', (req, res) => {
  * 
  */
 
- app.get('/student', (req, res) => {
+ app.get('/orders', (req, res) => {
     pool.getConnection()
     .then(conn => {
     
@@ -251,8 +251,8 @@ check('City').isLength({
 
  app.delete('/company/:companyid', 
  check('companyid').isLength({
-    max: 6
-}).withMessage('Id  should have max length of 6').not().isEmpty().trim(),
+    max: 12
+}).withMessage('Id  should have a maximum length of 12').not().isEmpty().trim(),
  
  (req, res) => {
    const id =  req.params.companyid
@@ -400,8 +400,8 @@ app.patch('/company/:companyid',
 
    
 check('companyid').isLength({
-    max: 6
-}).withMessage('Id  should have a maximum length of 6').not().isEmpty().trim(),
+    max: 12
+}).withMessage('Id  should have a maximum length of 12').not().isEmpty().trim(),
 check('name').isLength({
     max: 25
 }).withMessage('Company name should not exceed the length of 25').not().trim(),
